@@ -1,0 +1,13 @@
+<nav id="nav">
+  <div class="container">
+    <ul class="left hide-on-med-and-down">
+      <li><%= link_to 'My Account', owner_path(current_user.owner) %></li>
+      <li><%= link_to 'My Pets', pets_path %></li>
+      <li><%= link_to 'My Visits', visits_path %></li>
+
+    </ul>
+    <ul class="right">
+      <li><%= link_to 'Logout', logout_path %></li>
+    </ul>
+  </div>
+</nav>

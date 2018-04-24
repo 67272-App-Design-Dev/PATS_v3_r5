@@ -1,0 +1,21 @@
+<nav id="nav">
+  <div class="container">
+    <ul class="left hide-on-med-and-down">
+      <li><%= link_to 'Owners', owners_path %></li>
+      <li><%= link_to 'Pets', pets_path %></li>
+      <li><%= link_to 'Visits', visits_path %></li>
+      <% if can? :read, Medicine %>
+        <li><%= link_to 'Medicines', medicines_path %></li>
+      <% end %>
+      <% if can? :read, Procedure %>
+        <li><%= link_to 'Procedures', procedures_path %></li>
+      <% end %>
+      <% if can? :read, User %>
+        <li><%= link_to 'Users', users_path %></li>
+      <% end %>
+    </ul>
+    <ul class="right">
+      <li><%= link_to 'Logout', logout_path %></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-content">
+    <h5><%= best_in_place @owner, :first_name, as: :input %> 
+        <%= best_in_place @owner, :last_name, as: :input %></h5><br />
+
+    <b>Home Address:&nbsp;&nbsp;</b><br>
+      <%= best_in_place @owner, :street, as: :input %><br>
+      <%= best_in_place @owner, :city, as: :input %>, <%= best_in_place @owner, :state, as: :input %> <%= best_in_place @owner, :zip, as: :input %><br /><br />
+
+    <b>Phone:&nbsp;&nbsp;</b><br>
+      <%= best_in_place @owner, :phone, as: :input, display_with: :number_to_phone %><br /><br />
+
+    <b>Email:&nbsp;&nbsp;</b><br>
+      <%= best_in_place @owner, :email, as: :input %><br /><br />
+
+    <b>Username:&nbsp;&nbsp;</b><br>
+      <%= @owner.user.active ? @owner.username : "n/a" %><br /><br />
+
+    <b>Active with PATS?&nbsp;&nbsp;</b>
+      <%= @owner.active ? "Yes" : "No" %>
+      <br>
+  </div>
+</div>

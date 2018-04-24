@@ -1,0 +1,5 @@
+<% unless object.errors.empty? %>
+  <div data-alert data-options="animation_speed:500, animation:'fadeOut';" class="alert-box warning">
+    <%= object.errors[:base].first %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+  <div class="row">
+    <div class="col s7">
+      <h4><%= title %></h4>
+    </div>
+    <div class="col s5">
+
+          <%= form_with url: search_path, method: :get, class: "form-inline", id: "search" do %>
+              <%= text_field_tag 'query', '', placeholder: "Search ..." %>
+              <%# submit_tag('Find') %>
+            
+          <% end %>
+
+    </div>
+  </div>
+  

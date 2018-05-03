@@ -10,7 +10,11 @@ class HomeController < ApplicationController
 
   def privacy
   end
-
-  # def search
-  # end
+  
+  def search
+    @query = params[:query]
+    @owners = Owner.search(@query)
+    @pets = Pet.search(@query)
+    @total_hits = @owners.size + @pets.size
+  end
 end

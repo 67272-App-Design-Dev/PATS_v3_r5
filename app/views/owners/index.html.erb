@@ -1,7 +1,7 @@
 <% if @active_owners.empty? %>
   <h4>There are no owners in the system at this time.</h4>
 <% else %>
-  <h4>Active Owners in PATS</h4>
+  <%= render :partial => "partials/title_with_search", locals: {title: "Active Owners in PATS"} %>
   <table class="striped highlight">
     <thead>
       <th>Owner</th>

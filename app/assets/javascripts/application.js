@@ -52,3 +52,16 @@ $(document).ready(function(){
 $(document).ready(function() {
   jQuery(".best_in_place").best_in_place();
 });
+
+// Search submit on enter
+$(document).ready(function() {
+  function submitForm() {
+    document.getElementById("search").submit();
+  }
+  document.onkeydown = function () {
+    if (window.event.keyCode == '13') {
+        submitForm();
+    }
+  }
+});
+

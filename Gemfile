@@ -66,6 +66,7 @@ group :development, :test do
   gem 'simplecov', '0.15.1'
   gem 'shoulda', '3.5.0'
   gem 'shoulda-matchers', '2.8.0'
+  gem 'minitest', '5.10.3'
   gem 'minitest-rails', '3.0.0'
   gem 'minitest-reporters', '1.1.19'
   gem 'rails-controller-testing', '1.0.2'

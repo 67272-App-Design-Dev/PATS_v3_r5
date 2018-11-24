@@ -9,11 +9,9 @@ module Contexts
     end
     
     def destroy_owners
-
-      @rachel.destroy
-      @mark.destroy
-      @alex.destroy
-      destroy_owner_users
+      @rachel.delete
+      @mark.delete
+      @alex.delete
     end
 
   end

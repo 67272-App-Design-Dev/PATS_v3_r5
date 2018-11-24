@@ -48,11 +48,11 @@ class VisitsControllerTest < ActionDispatch::IntegrationTest
     assert_template :edit
   end
 
-  test "should destroy visit" do
-    assert_difference('Visit.count', -1) do
+  test "should not destroy visit" do
+    assert_difference('Visit.count', 0) do
       delete visit_path(@visit)
     end
 
-    assert_redirected_to visits_path
+    assert_redirected_to visit_path(@visit)
   end
 end

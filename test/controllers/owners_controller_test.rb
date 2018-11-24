@@ -18,7 +18,8 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create owner" do
     assert_difference('Owner.count') do
-      post owners_path, params: { owner: { active: @owner.active, city: @owner.city, email: "eheimann@example.com", first_name: "Eric", last_name: @owner.last_name, phone: @owner.phone, state: @owner.state, street: @owner.street, zip: @owner.zip } }
+      # post owners_path, params: { owner: { active: @owner.active, city: @owner.city, email: "eheimann@example.com", first_name: "Eric", last_name: @owner.last_name, phone: @owner.phone, state: @owner.state, street: @owner.street, zip: @owner.zip } }
+      post owners_path, params: { owner: { username: "eric", password: "secret", password_confirmation: "secret", active: @owner.active, city: @owner.city, email: "eheimann@example.com", first_name: "Eric", last_name: @owner.last_name, phone: @owner.phone, state: @owner.state, street: @owner.street, zip: @owner.zip } }
     end
 
     assert_redirected_to owner_path(Owner.last)
@@ -45,11 +46,15 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     assert_template :edit
   end
 
-  test "should destroy owner" do
-    assert_difference('Owner.count', -1) do
+  test "should not destroy owner" do
+    assert @owner.active
+    ## We no longer allow owners to be destroyed
+    assert_difference('Owner.count', 0) do
       delete owner_path(@owner)
     end
-
-    assert_redirected_to owners_path
+    ## ... but they are now made inactive
+    @owner.reload
+    deny @owner.active
+    # assert_redirected_to owners_path
   end
 end

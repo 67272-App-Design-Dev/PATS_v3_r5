@@ -44,13 +44,16 @@ class VisitsController < ApplicationController
   end
   
   def destroy
-    if @visit.destroy
-      flash[:notice] = "Successfully removed the visit of #{@visit.pet.name} on #{@visit.date.strftime('%b %e')}."
-      redirect_to visits_url
-    else
-      get_related_data()
-      render action: 'show'
-    end
+    ## We are no longer allowing visits to be destroyed
+    # if @visit.destroy
+    #   flash[:notice] = "Successfully removed the visit of #{@visit.pet.name} on #{@visit.date.strftime('%b %e')}."
+    #   redirect_to visits_url
+    # else
+    #   get_related_data()
+    #   render action: 'show'
+    # end
+    flash[:notice] = "Visits cannot be destroyed in the PATS system"
+    redirect_to @visit
   end
 
   def dosages

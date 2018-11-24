@@ -1,23 +1,23 @@
 require "test_helper"
 
 describe UsersController do
-  it "should get index" do
-    get users_index_url
-    value(response).must_be :success?
+  setup do
+    login_vet
+    @user = FactoryBot.create(:user)
   end
 
-  it "should get show" do
-    get users_show_url
+  it "should get index" do
+    get users_path
     value(response).must_be :success?
   end
 
   it "should get new" do
-    get users_new_url
+    get new_user_path
     value(response).must_be :success?
   end
 
   it "should get edit" do
-    get users_edit_url
+    get edit_user_path(@user)
     value(response).must_be :success?
   end
 

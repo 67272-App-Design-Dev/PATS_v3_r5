@@ -47,11 +47,15 @@ class PetsControllerTest < ActionDispatch::IntegrationTest
     assert_template :edit
   end
 
-  test "should destroy pet" do
-    assert_difference('Pet.count', -1) do
+  test "should not destroy pet" do
+    assert @pet.active
+    ## We no longer allow pets to be destroyed
+    assert_difference('Pet.count', 0) do
       delete pet_path(@pet)
     end
-
-    assert_redirected_to pets_path
+    ## ... but they are now made inactive
+    @pet.reload
+    deny @pet.active
+    # assert_redirected_to pets_path
   end
 end

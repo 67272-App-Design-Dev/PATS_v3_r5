@@ -39,8 +39,9 @@ class UsersController < ApplicationController
   def destroy
     if @user.destroy
       redirect_to users_url, notice: "Successfully removed #{@user.proper_name} from the PATS system."
-    else
-      render action: 'show'
+    ## There is no 'else' for now; we have no restrictions on user deletion (although we probably should)
+    # else
+    #   render action: 'show'
     end
   end
 

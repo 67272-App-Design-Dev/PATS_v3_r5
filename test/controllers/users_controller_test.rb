@@ -10,6 +10,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_path
     assert_response :success
   end
+  
+  test "should get new" do
+    get new_user_path
+    assert_response :success
+  end
 
   test "should create user" do
     assert_difference('User.count') do

@@ -9,7 +9,13 @@ class VisitsControllerTest < ActionDispatch::IntegrationTest
     @visit  = FactoryBot.create(:visit, pet: @pet)
   end
 
-  test "should get index" do
+  test "should get index for vet" do
+    get visits_path
+    assert_response :success
+  end
+  
+  test "should get index for owner" do
+    login_owner
     get visits_path
     assert_response :success
   end
@@ -54,5 +60,12 @@ class VisitsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to visit_path(@visit)
+  end
+  
+  test "should get dosages" do
+    ## only used for json/vuejs; for now just an empty array
+    get("#{visit_dosages_path(@visit)}.json")
+    assert_response :success
+    assert_equal @response.body, "[]"
   end
 end

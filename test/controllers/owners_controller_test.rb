@@ -23,11 +23,17 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to owner_path(Owner.last)
-
-    post owners_path, params: { owner: { active: @owner.active, city: @owner.city, email: @owner.email, first_name: nil, last_name: @owner.last_name, phone: @owner.phone, state: @owner.state, street: @owner.street, zip: @owner.zip } }
+  end
+  
+  test "should not create if owner or user invalid" do
+    # invalid user
+    post owners_path, params: { owner: { username: nil, password: "secret", password_confirmation: "secret", active: @owner.active, city: @owner.city, email: "eheimann@example.com", first_name: "Eric", last_name: @owner.last_name, phone: @owner.phone, state: @owner.state, street: @owner.street, zip: @owner.zip } }
+    assert_template :new
+    # invalid owner
+    post owners_path, params: { owner: { username: "eric", password: "secret", password_confirmation: "secret", active: @owner.active, city: @owner.city, email: "eheimann@example.com", first_name: "Eric", last_name: @owner.last_name, phone: @owner.phone, state: "of confusion", street: @owner.street, zip: nil } }
     assert_template :new
   end
-
+  
   test "should show owner" do
     get owner_path(@owner)
     assert_response :success

@@ -1,24 +1,45 @@
-require "test_helper"
+require 'test_helper'
 
-describe UsersController do
+class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     login_vet
-    @user = FactoryBot.create(:user)
+    @user  = FactoryBot.create(:user)
   end
 
-  it "should get index" do
+  test "should get index" do
     get users_path
-    value(response).must_be :success?
+    assert_response :success
   end
 
-  it "should get new" do
-    get new_user_path
-    value(response).must_be :success?
+  test "should create user" do
+    assert_difference('User.count') do
+      post users_path, params: { user: { first_name: "Eric", last_name: "Gruberman", username: "eric", role: "owner", password: "secret", password_confirmation: "secret", active: true } }
+    end
+
+    assert_redirected_to users_path
+  
+    post users_path, params: { user: { first_name: "Eric", last_name: "Gruberman", username: nil, role: "owner", password: "secret", password_confirmation: "secret", active: true } }
+    assert_template :new
   end
 
-  it "should get edit" do
+  test "should get edit" do
     get edit_user_path(@user)
-    value(response).must_be :success?
+    assert_response :success
   end
 
+  test "should update user" do
+    patch user_path(@user), params: { user: {first_name: "Eric", last_name: "Gruberman", username: @user.username, role: @user.role, password: "notsecret", password_confirmation: "notsecret", active: true } }
+    assert_redirected_to users_path
+
+    patch user_path(@user), params: { user: { first_name: "Eric", last_name: "Gruberman", username: nil, role: @user.role, password: "notsecret", password_confirmation: "notsecret", active: true } }
+    assert_template :edit
+  end
+
+  test "should not destroy user" do
+    assert_difference('User.count', -1) do
+      delete user_path(@user)
+    end
+
+    assert_redirected_to users_path
+  end
 end

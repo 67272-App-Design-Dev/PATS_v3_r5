@@ -53,9 +53,12 @@ class OwnersController < ApplicationController
   end
 
   def destroy
+    ## We don't allow destroy (will deactivate instead)
     if @owner.destroy
-      redirect_to owners_url, notice: "Successfully removed #{@owner.proper_name} from the PATS system."
+      # irrelevant now...
+      # redirect_to owners_url, notice: "Successfully removed #{@owner.proper_name} from the PATS system."
     else
+      # we still want this path with the base error message shown
       @current_pets = @owner.pets.alphabetical.active.to_a
       render action: 'show'
     end
@@ -70,8 +73,8 @@ class OwnersController < ApplicationController
       params.require(:owner).permit(:first_name, :last_name, :street, :city, :state, :zip, :phone, :email, :active, :username, :password, :password_confirmation)
     end
 
-    def user_params
-      params.require(:owner).permit(:first_name, :last_name, :street, :city, :state, :zip, :phone, :email, :active, :username, :password, :password_confirmation)
+    def user_params      
+      params.require(:owner).permit(:first_name, :last_name, :active, :username, :password, :password_confirmation)
     end
 
 end

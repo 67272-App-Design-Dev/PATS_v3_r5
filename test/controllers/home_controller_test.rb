@@ -21,5 +21,15 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get privacy_path
     assert_response :success
   end
+  
+  test "should get search" do
+    get search_path, params: { query: "Dusty" }
+    assert_response :success
+  end
+  
+  test "should handle blank search" do
+    get search_path, params: { query: nil }
+    assert_response :redirect
+  end
 
 end

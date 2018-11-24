@@ -35,9 +35,9 @@ Rails.application.routes.draw do
   get 'visits/:id/dosages', to: 'visits#dosages', as: :visit_dosages
 
   # Routes for searching
-  get 'medicines/search', to: 'medicines#search', as: :medicine_search
-  get 'owners/search', to: 'owners#search', as: :owner_search
-  get 'pets/search', to: 'pets#search', as: :pet_search
+  # get 'medicines/search', to: 'medicines#search', as: :medicine_search
+  # get 'owners/search', to: 'owners#search', as: :owner_search
+  # get 'pets/search', to: 'pets#search', as: :pet_search
 
   # You can have the root of your site routed with 'root'
   root 'home#index'

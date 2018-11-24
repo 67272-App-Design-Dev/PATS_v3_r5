@@ -53,6 +53,21 @@ class ProceduresControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to procedures_path
   end
+  
+  test "should not destroy procedure" do
+    # have to create a treatment for the procedure so not destroyed
+    @cat        = FactoryBot.create(:animal)
+    @alex_user  = FactoryBot.create(:user, first_name: "Alex", last_name: "Heimann", username: "alex", role: "owner")
+    @alex       = FactoryBot.create(:owner, user: @alex_user)
+    @dusty      = FactoryBot.create(:pet, animal: @cat, owner: @alex, female: false)
+    @visit1     = FactoryBot.create(:visit, pet: @dusty)
+    @visit1_t1  = FactoryBot.create(:treatment, visit: @visit1, procedure: @procedure)
+    
+    assert_difference('Procedure.count', 0) do
+      delete procedure_path(@procedure)
+    end
+    assert_template :show
+  end
 end
 
 

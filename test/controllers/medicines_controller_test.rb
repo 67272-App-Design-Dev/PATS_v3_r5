@@ -50,8 +50,23 @@ class MedicinesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Medicine.count', -1) do
       delete medicine_path(@medicine)
     end
-
     assert_redirected_to medicines_path
+  end
+  
+  test "should not destroy medicine" do
+    # have to create a dosage for the medicine so not destroyed
+    @cat        = FactoryBot.create(:animal)
+    @cat_rabies = FactoryBot.create(:animal_medicine, animal: @cat, medicine: @medicine)
+    @alex_user  = FactoryBot.create(:user, first_name: "Alex", last_name: "Heimann", username: "alex", role: "owner")
+    @alex       = FactoryBot.create(:owner, user: @alex_user)
+    @dusty      = FactoryBot.create(:pet, animal: @cat, owner: @alex, female: false)
+    @visit1     = FactoryBot.create(:visit, pet: @dusty)
+    @visit1_d1  = FactoryBot.create(:dosage, visit: @visit1, medicine: @medicine)
+    
+    assert_difference('Medicine.count', 0) do
+      delete medicine_path(@medicine)
+    end
+    assert_template :show
   end
 end
 

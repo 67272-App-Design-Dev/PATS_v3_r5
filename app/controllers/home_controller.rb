@@ -12,6 +12,7 @@ class HomeController < ApplicationController
   end
   
   def search
+    redirect_back(fallback_location: home_path) if params[:query].blank?
     @query = params[:query]
     @owners = Owner.search(@query)
     @pets = Pet.search(@query)

@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # Validations
   # make sure required fields are present
   validates_presence_of :first_name, :last_name 
-  validates :username, presence: true, uniqueness: { case_sensitive: false}
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates_presence_of :password, :on => :create 
   validates_presence_of :password_confirmation, :on => :create 
   validates_confirmation_of :password, message: "does not match"

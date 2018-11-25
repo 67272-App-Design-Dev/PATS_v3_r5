@@ -102,5 +102,18 @@ class PetTest < ActiveSupport::TestCase
       deny inactive_owner.valid?
       # again we've created plenty of valid pets earlier, so only testing the bad cases here...
     end
+    
+    should "never be destroyed" do
+      deny @dusty.destroy
+    end
+    
+    should "deactive a pet instead of being destroyed" do
+      assert @dusty.active
+      @dusty.destroy
+      @dusty.reload
+      deny @dusty.active
+    end
+    
+    
   end
 end

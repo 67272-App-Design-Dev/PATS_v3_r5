@@ -95,6 +95,20 @@ class DosageTest < ActiveSupport::TestCase
       @amoxicillin.reload
       assert_equal (original_stock_amount - visit1_d2.units_given), @amoxicillin.stock_amount
     end
+    
+    should "correctly calculate the additional cost of dosage" do
+      assert_equal @visit1.total_charge, 6500
+      addt_dosge = FactoryBot.create(:dosage, visit: @visit1, medicine: @amoxicillin)
+      @visit1.reload
+      assert_equal @visit1.total_charge, 8500
+    end
+    
+    should "correctly recalculate the refund for a deleted dosage" do
+      assert_equal @visit1.total_charge, 6500
+      @visit1_d1.destroy
+      @visit1.reload
+      assert_equal @visit1.total_charge, 5000
+    end
 
   end
 end

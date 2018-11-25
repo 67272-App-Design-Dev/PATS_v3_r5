@@ -64,11 +64,8 @@ class Dosage < ApplicationRecord
     visit = self.visit
     previous_charge = visit.total_charge
     previous_costs = MedicineCost.for_medicine(self.medicine_id).for_date(self.visit.date)
-    if previous_costs.empty?  # shouldn't be the case, but...
-      cost_per_unit_of_old_meds = 0
-    else
-      cost_per_unit_of_old_meds = previous_costs.first.cost_per_unit
-    end
+    return true if previous_costs.empty?  # nothing to refund
+    cost_per_unit_of_old_meds = previous_costs.first.cost_per_unit
     revised_charge = previous_charge - (self.units_given * cost_per_unit_of_old_meds * (1 - self.discount))
     visit.update_attribute(:total_charge, revised_charge)    
   end

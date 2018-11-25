@@ -62,5 +62,19 @@ class TreatmentTest < ActiveSupport::TestCase
       @visit2_t2.destroy
       assert_equal (old_charge - refund_amount), @visit2.total_charge
     end
+    
+    should "correctly calculate the additional cost of treatment" do
+      assert_equal @visit1.total_charge, 8000
+      addt_treatment = FactoryBot.create(:treatment, visit: @visit1, procedure: @xray)
+      @visit1.reload
+      assert_equal @visit1.total_charge, 12000
+    end
+    
+    should "correctly recalculate the refund for a deleted treatment" do
+      assert_equal @visit1.total_charge, 8000
+      @visit1_t1.destroy
+      @visit1.reload
+      assert_equal @visit1.total_charge, 5000
+    end
   end
 end

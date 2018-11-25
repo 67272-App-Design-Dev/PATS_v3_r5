@@ -117,5 +117,37 @@ class OwnerTest < ActiveSupport::TestCase
     should "shows that Mark's phone is stripped of non-digits" do
       assert_equal "4122688211", @mark.phone
     end
+    
+    should "never be destroyed" do
+      deny @alex.destroy
+    end
+    
+    should "deactive an owner (and pets) instead of being destroyed" do
+      create_animals
+      create_pets
+      assert @alex.active
+      assert @alex_user.active
+      assert_equal @alex.pets.active.count, 1
+      @alex.destroy
+      @alex.reload
+      @alex_user.reload
+      deny @alex.active
+      deny @alex_user.active
+      assert_equal @alex.pets.active.count, 0
+      destroy_pets
+      destroy_animals
+    end
+    
+    should "reactive user if owner is made active" do
+      deny @rachel.active
+      deny @rachel_user.active
+      @rachel.make_active
+      @rachel.reload
+      @rachel_user.reload
+      assert @rachel.active
+      assert @rachel_user.active
+    end
+    
+    
   end
 end

@@ -34,11 +34,8 @@ class Treatment < ApplicationRecord
     visit = self.visit
     previous_charge = visit.total_charge
     previous_costs = ProcedureCost.for_procedure(self.procedure_id).for_date(self.visit.date)
-    if previous_costs.empty?  # shouldn't be the case, but...
-      cost_of_old_procedure = 0
-    else
-      cost_of_old_procedure = previous_costs.first.cost
-    end
+    return true if previous_costs.empty?  # nothing to refund
+    cost_of_old_procedure = previous_costs.first.cost
     revised_charge = previous_charge - (cost_of_old_procedure * (1 - self.discount))
     visit.update_attribute(:total_charge, revised_charge)    
   end

@@ -29,8 +29,14 @@ gem 'jbuilder', '2.7.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '3.1.11'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# Security updates for Github
+gem 'sprockets', '>= 3.7.2'
+gem 'rubyzip', '>= 1.2.2'
+gem 'ffi', '>= 1.9.24'
+gem 'rack', '>= 2.0.6'
+gem 'loofah', '>= 2.2.3'
+gem 'rails-html-sanitizer', '>= 1.0.4'
+
 
 # Other gems
 gem 'chronic', '0.10.2'
@@ -47,8 +53,7 @@ gem 'will_paginate', '3.1.6'
 gem 'vuejs-rails', '2.5.13'
 gem 'best_in_place', '~> 3.0.1'
 
-# Get rid of github warning
-gem 'loofah', '2.2.1'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

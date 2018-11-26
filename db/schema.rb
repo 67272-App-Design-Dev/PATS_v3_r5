@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20180320013952) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "animal_medicines", force: :cascade do |t|
-    t.integer "animal_id"
-    t.integer "medicine_id"
+    t.bigint "animal_id"
+    t.bigint "medicine_id"
     t.integer "recommended_num_of_units"
     t.index ["animal_id"], name: "index_animal_medicines_on_animal_id"
     t.index ["medicine_id"], name: "index_animal_medicines_on_medicine_id"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 20180320013952) do
   end
 
   create_table "dosages", force: :cascade do |t|
-    t.integer "visit_id"
-    t.integer "medicine_id"
+    t.bigint "visit_id"
+    t.bigint "medicine_id"
     t.integer "units_given"
     t.float "discount", default: 0.0
     t.index ["medicine_id"], name: "index_dosages_on_medicine_id"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20180320013952) do
   end
 
   create_table "medicine_costs", force: :cascade do |t|
-    t.integer "medicine_id"
+    t.bigint "medicine_id"
     t.integer "cost_per_unit"
     t.date "start_date"
     t.date "end_date"
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20180320013952) do
     t.integer "notable_id"
     t.string "title"
     t.text "content"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "written_on"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
@@ -77,8 +80,8 @@ ActiveRecord::Schema.define(version: 20180320013952) do
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.integer "animal_id"
-    t.integer "owner_id"
+    t.bigint "animal_id"
+    t.bigint "owner_id"
     t.boolean "female"
     t.date "date_of_birth"
     t.boolean "active", default: true
@@ -87,7 +90,7 @@ ActiveRecord::Schema.define(version: 20180320013952) do
   end
 
   create_table "procedure_costs", force: :cascade do |t|
-    t.integer "procedure_id"
+    t.bigint "procedure_id"
     t.integer "cost"
     t.date "start_date"
     t.date "end_date"
@@ -102,8 +105,8 @@ ActiveRecord::Schema.define(version: 20180320013952) do
   end
 
   create_table "treatments", force: :cascade do |t|
-    t.integer "visit_id"
-    t.integer "procedure_id"
+    t.bigint "visit_id"
+    t.bigint "procedure_id"
     t.boolean "successful"
     t.float "discount", default: 0.0
     t.index ["procedure_id"], name: "index_treatments_on_procedure_id"
@@ -120,7 +123,7 @@ ActiveRecord::Schema.define(version: 20180320013952) do
   end
 
   create_table "visits", force: :cascade do |t|
-    t.integer "pet_id"
+    t.bigint "pet_id"
     t.date "date"
     t.float "weight"
     t.boolean "overnight_stay"
@@ -128,4 +131,16 @@ ActiveRecord::Schema.define(version: 20180320013952) do
     t.index ["pet_id"], name: "index_visits_on_pet_id"
   end
 
+  add_foreign_key "animal_medicines", "animals"
+  add_foreign_key "animal_medicines", "medicines"
+  add_foreign_key "dosages", "medicines"
+  add_foreign_key "dosages", "visits"
+  add_foreign_key "medicine_costs", "medicines"
+  add_foreign_key "notes", "users"
+  add_foreign_key "pets", "animals"
+  add_foreign_key "pets", "owners"
+  add_foreign_key "procedure_costs", "procedures"
+  add_foreign_key "treatments", "procedures"
+  add_foreign_key "treatments", "visits"
+  add_foreign_key "visits", "pets"
 end

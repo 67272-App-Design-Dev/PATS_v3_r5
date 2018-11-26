@@ -1,6 +1,10 @@
 class Medicine < ApplicationRecord
   include AppHelpers::Activeable::InstanceMethods
   extend AppHelpers::Activeable::ClassMethods
+
+  # Search
+  include PgSearch
+  multisearchable :against => [:name, :description]
   
   # Relationships
   has_many :animal_medicines

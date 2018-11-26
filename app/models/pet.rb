@@ -4,6 +4,10 @@ class Pet < ApplicationRecord
   include AppHelpers::Activeable::InstanceMethods
   extend AppHelpers::Activeable::ClassMethods
 
+  # Search
+  include PgSearch
+  multisearchable :against => [:name]
+
   # Relationships
   # -----------------------------
   belongs_to :animal

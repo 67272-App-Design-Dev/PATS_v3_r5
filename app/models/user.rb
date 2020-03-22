@@ -7,8 +7,10 @@ class User < ApplicationRecord
   # attr_accessor :password, :password_confirmation
     
   # Relationships
-  # has_many :notes
   has_one :owner
+
+  # Delegate (to handle resetting passwords for owners who forgot pswd)
+  delegate(:email, :read, to: :owner, allow_nil: true)
 
   # Validations
   # make sure required fields are present

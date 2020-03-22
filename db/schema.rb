@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320013952) do
+ActiveRecord::Schema.define(version: 20200322183345) do
 
   create_table "animal_medicines", force: :cascade do |t|
     t.integer "animal_id"
@@ -117,6 +117,9 @@ ActiveRecord::Schema.define(version: 20180320013952) do
     t.string "username"
     t.string "password_digest"
     t.boolean "active", default: true
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.datetime "active_after"
   end
 
   create_table "visits", force: :cascade do |t|

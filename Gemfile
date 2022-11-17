@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.4'
+gem 'rails', '5.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '1.3.13'
 # Use Puma as the app server
@@ -41,7 +41,7 @@ gem 'rails-html-sanitizer', '>= 1.0.4'
 # Other gems
 gem 'chronic', '0.10.2'
 gem 'materialize-sass', '0.100.2'
-gem 'simple_form', '3.5.0'
+gem 'simple_form', '4.0.0'
 gem 'materialize-form', '1.0.8'
 gem 'jquery-rails', '4.3.1'
 gem 'jquery-ui-rails', '6.0.1'
@@ -51,7 +51,7 @@ gem 'time_date_helpers', '0.0.2'
 gem 'carrierwave', '1.2.2'
 gem 'will_paginate', '3.1.6'
 gem 'vuejs-rails', '2.5.13'
-gem 'best_in_place', '~> 3.0.1'
+gem 'best_in_place', '~> 3.1.1'
 
 
 
@@ -69,8 +69,8 @@ group :development, :test do
   gem 'populator', '1.0.0'
   gem 'factory_bot_rails', '4.8.2'
   gem 'simplecov', '0.15.1'
-  gem 'shoulda', '3.5.0'
-  gem 'shoulda-matchers', '2.8.0'
+  gem 'shoulda', '4.0.0'
+  gem 'shoulda-matchers', '~> 4.0.0'
   gem 'minitest', '5.10.3'
   gem 'minitest-rails', '3.0.0'
   gem 'minitest-reporters', '1.1.19'

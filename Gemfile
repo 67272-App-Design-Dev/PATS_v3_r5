@@ -8,13 +8,13 @@ end
 ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.3'
+gem 'rails', '6.0.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '1.3.13'
+gem 'sqlite3', '1.4.2'
 # Use Puma as the app server
 gem 'puma', '3.11.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '5.0.7'
+gem 'sass-rails', '~> 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '4.1.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -53,7 +53,7 @@ gem 'time_date_helpers', '0.0.2'
 gem 'carrierwave', '1.2.2'
 gem 'will_paginate', '3.1.8'
 gem 'vuejs-rails', '2.5.13'
-gem 'best_in_place', '~> 3.0.1'
+gem 'best_in_place', '~> 3.1.1'
 
 
 
@@ -65,7 +65,7 @@ group :development, :test do
   gem 'selenium-webdriver', '3.8.0'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'meta_request', '0.5.0'
+  gem 'meta_request', '0.7.3'
   gem 'hirb', '0.7.3'
   gem 'faker', '1.8.7'
   gem 'populator', '1.0.0'
@@ -73,10 +73,10 @@ group :development, :test do
   gem 'simplecov', '0.15.1'
   gem 'shoulda', '4.0.0'
   gem 'shoulda-matchers', '~> 4.0.0'
-  gem 'minitest', '5.10.3'
-  gem 'minitest-rails', '3.0.0'
-  gem 'minitest-reporters', '1.1.19'
-  gem 'rails-controller-testing', '1.0.2'
+  gem 'minitest', '5.16.3'
+  gem 'minitest-rails', '6.0.0'
+  gem 'minitest-reporters', '1.5.0'
+  gem 'rails-controller-testing', '1.0.5'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'launchy'

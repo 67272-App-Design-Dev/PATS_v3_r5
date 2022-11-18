@@ -65,15 +65,28 @@ class Pet < ApplicationRecord
 
   before_destroy do 
     cannot_destroy_object()
+    # self.destroyable = false
+    # # errors.add(:base, "foo")
+    # # self.make_pet_inactive
+    # # puts self.active
+    # self.save!
+    # throw(:abort)
+    # false
   end
   
-  # after_rollback do
+  after_rollback do
+    puts "ROLING BACK"
+    self.active = false
+    self.save!
+    # self.make_pet_inactive
+  end
+  #   puts "ROLLING BACK"
   #   return true unless self.destroyable == false
   #   self.make_inactive
   #   # problem is no error msg given to user
   # end
 
-  after_rollback :make_pet_inactive  #, on: :destroy
+  # after_rollback :make_pet_inactive  #, on: :destroy
   
   # Use private methods to execute the custom validations
   # -----------------------------
@@ -87,8 +100,11 @@ class Pet < ApplicationRecord
   end
 
   def make_pet_inactive
+    puts "MAKING PET INACTIVE"
     return true unless self.destroyable == false
+    puts "check1"
     self.make_inactive
+    puts "check2"
     msg = "This #{self.class.to_s.downcase} cannot be deleted but was made inactive instead."
     errors.add(:base, msg)
   end

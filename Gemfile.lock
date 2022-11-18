@@ -47,7 +47,7 @@ GEM
     ansi (1.5.0)
     arel (9.0.0)
     bcrypt (3.1.11)
-    best_in_place (3.1.1)
+    best_in_place (3.0.3)
       actionpack (>= 3.2)
       railties (>= 3.2)
     better_errors (2.9.1)
@@ -314,7 +314,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.1.6)
+    will_paginate (3.1.8)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -323,7 +323,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (= 3.1.11)
-  best_in_place (~> 3.1.1)
+  best_in_place (~> 3.0.1)
   better_errors
   binding_of_caller
   byebug
@@ -373,7 +373,7 @@ DEPENDENCIES
   validates_timeliness (= 4.0.2)
   vuejs-rails (= 2.5.13)
   web-console (= 3.5.1)
-  will_paginate (= 3.1.6)
+  will_paginate (= 3.1.8)
 
 BUNDLED WITH
    1.17.3

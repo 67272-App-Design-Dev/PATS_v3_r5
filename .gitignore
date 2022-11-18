@@ -29,3 +29,6 @@ app/assets/images/.DS_Store
 app/assets/stylesheets/.DS_Store
 app/assets/javascripts/.DS_Store
 
+
+db/development.sqlite3
+db/test.sqlite3

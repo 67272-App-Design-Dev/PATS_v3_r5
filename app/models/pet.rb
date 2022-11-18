@@ -64,13 +64,13 @@ class Pet < ApplicationRecord
   end  
 
   before_destroy do 
-    cannot_destroy_object()
+    # cannot_destroy_object()
     # self.destroyable = false
     # # errors.add(:base, "foo")
     # # self.make_pet_inactive
     # # puts self.active
-    # self.save!
-    # throw(:abort)
+    self.save!
+    throw(:abort)
     # false
   end
   

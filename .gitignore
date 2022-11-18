@@ -32,3 +32,5 @@ app/assets/javascripts/.DS_Store
 
 db/development.sqlite3
 db/test.sqlite3
+
+Gemfile.lock

@@ -68,6 +68,9 @@ class TreatmentTest < ActiveSupport::TestCase
       addt_treatment = FactoryBot.create(:treatment, visit: @visit1, procedure: @xray)
       @visit1.reload
       assert_equal @visit1.total_charge, 12000
+
+      # clean up created fixtures
+      addt_treatment.delete
     end
     
     should "correctly recalculate the refund for a deleted treatment" do

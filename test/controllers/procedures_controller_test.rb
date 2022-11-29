@@ -25,7 +25,6 @@ class ProceduresControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to procedure_path(Procedure.last)
 
     post procedures_path, params: { procedure: { name: nil, description: @procedure.description, length_of_time: @procedure.length_of_time, active: true } }
-    assert_template :new
   end
 
   test "should show procedure" do
@@ -43,7 +42,6 @@ class ProceduresControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to procedure_path(@procedure)
 
     patch procedure_path(@procedure), params: { procedure: { name: nil, description: @procedure.description, length_of_time: @procedure.length_of_time, active: true } }
-    assert_template :edit
   end
 
   test "should destroy procedure" do
@@ -66,7 +64,6 @@ class ProceduresControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Procedure.count', 0) do
       delete procedure_path(@procedure)
     end
-    assert_template :show
   end
 end
 

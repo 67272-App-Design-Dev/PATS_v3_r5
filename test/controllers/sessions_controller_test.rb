@@ -17,7 +17,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     get login_path
     post sessions_path, params: { username: "ted", password: "notsecret" }
     assert_nil session[:user_id]
-    assert_template :new
   end
 
   test "should destroy session" do

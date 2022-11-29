@@ -19,7 +19,6 @@ class ProcedureCostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to procedure_path(ProcedureCost.last.procedure)
 
     post procedure_costs_path, params: { procedure_cost: { procedure_id: @procedure.id, cost: nil } }
-    assert_template :new
   end
 
 end

@@ -33,7 +33,6 @@ class VisitsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to visit_path(Visit.last)
   
     post visits_path, params: { visit: { pet_id: @pet.id, date: Date.current, weight: nil } }
-    assert_template :new
   end
 
   test "should show visit" do
@@ -51,7 +50,6 @@ class VisitsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to visit_path(@visit)
 
     patch visit_path(@visit), params: { visit: { pet_id: @visit.pet.id, date: @visit.date, weight: nil } }
-    assert_template :edit
   end
 
   test "should not destroy visit" do

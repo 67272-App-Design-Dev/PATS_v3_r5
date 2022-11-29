@@ -23,7 +23,6 @@ class DosagesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to visit_path(Dosage.last.visit)
 
     post dosages_path, params: { dosage: { visit_id: @visit.id, medicine_id: @medicine.id, units_given: nil } }
-    assert_template :new
   end
 
 

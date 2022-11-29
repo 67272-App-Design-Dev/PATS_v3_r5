@@ -23,7 +23,6 @@ class TreatmentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to visit_path(Treatment.last.visit)
 
     post treatments_path, params: { treatment: { visit_id: @visit.id, procedure_id: nil } }
-    assert_template :new
   end
 
 

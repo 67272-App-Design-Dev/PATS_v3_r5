@@ -19,7 +19,6 @@ class MedicineCostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to medicine_path(MedicineCost.last.medicine)
 
     post medicine_costs_path, params: { medicine_cost: { medicine_id: @medicine.id, cost_per_unit: nil } }
-    assert_template :new
   end
 
 end

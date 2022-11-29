@@ -32,7 +32,6 @@ class PetsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to pet_path(Pet.last)
 
     post pets_path, params: { pet: { name: nil, animal_id: @animal.id, owner_id: @owner.id, female: true, date_of_birth: 3.years.ago.to_date, active: true } }
-    assert_template :new
   end
 
   test "should show pet" do
@@ -50,7 +49,6 @@ class PetsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to pet_path(@pet)
 
     patch pet_path(@pet), params: { pet: { name: nil, animal_id: @pet.animal.id, owner_id: @pet.owner.id, female: true, date_of_birth: @pet.date_of_birth, active: true } }
-    assert_template :edit
   end
 
   test "should not destroy pet" do

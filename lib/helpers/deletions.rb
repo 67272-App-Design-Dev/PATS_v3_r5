@@ -18,3 +18,6 @@ module AppHelpers
     end
   end
 end
+
+module Deletions
+end

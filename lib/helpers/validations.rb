@@ -36,3 +36,5 @@ module AppHelpers
     end
   end
 end
+module Validations
+end

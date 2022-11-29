@@ -23,3 +23,6 @@ module AppHelpers
     end
   end
 end
+
+module Activeable
+end

@@ -12,20 +12,17 @@ gem 'rails', '6.0.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '1.4.2'
 # Use Puma as the app server
-gem 'puma', '3.11.0'
+gem 'puma', '4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0.0'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '4.1.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '4.2.2'
+gem 'coffee-rails', '5.0.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '2.7.0'
+gem 'jbuilder', '2.11.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -42,7 +39,7 @@ gem 'rails-html-sanitizer', '>= 1.0.4'
 
 # Other gems
 gem 'chronic', '0.10.2'
-gem 'materialize-sass', '0.100.2'
+gem 'materialize-sass', '0.100.2.1'
 gem 'simple_form', '4.0.0'
 gem 'materialize-form', '1.0.8'
 gem 'jquery-rails', '4.3.1'
@@ -63,7 +60,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '2.17.0'
   gem 'selenium-webdriver', '3.8.0'
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request', '0.7.3'
   gem 'hirb', '0.7.3'
@@ -74,7 +71,7 @@ group :development, :test do
   gem 'shoulda', '4.0.0'
   gem 'shoulda-matchers', '~> 4.0.0'
   gem 'minitest', '5.16.3'
-  gem 'minitest-rails', '6.0.0'
+  gem 'minitest-rails', '6.0.1'
   gem 'minitest-reporters', '1.5.0'
   # gem 'rails-controller-testing', '1.0.5'
   gem 'cucumber-rails', require: false

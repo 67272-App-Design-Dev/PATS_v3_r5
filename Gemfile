@@ -51,7 +51,7 @@ gem 'cancancan', '2.1.2'
 gem 'validates_timeliness', '4.0.2'
 gem 'time_date_helpers', '0.0.2'
 gem 'carrierwave', '1.2.2'
-gem 'will_paginate', '3.1.8'
+gem 'will_paginate', '3.3.1'
 gem 'vuejs-rails', '2.5.13'
 gem 'best_in_place', '~> 3.1.1'
 

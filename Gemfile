@@ -8,7 +8,7 @@ end
 ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.0.6'
+gem 'rails', '6.1.7'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '1.4.2'
 # Use Puma as the app server
@@ -50,8 +50,7 @@ gem 'time_date_helpers', '0.0.2'
 gem 'carrierwave', '1.2.2'
 gem 'will_paginate', '3.3.1'
 gem 'vuejs-rails', '2.5.13'
-gem 'best_in_place', '~> 3.1.1'
-
+gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 
 
 group :development, :test do
@@ -71,7 +70,7 @@ group :development, :test do
   gem 'shoulda', '4.0.0'
   gem 'shoulda-matchers', '~> 4.0.0'
   gem 'minitest', '5.16.3'
-  gem 'minitest-rails', '6.0.1'
+  gem 'minitest-rails', '6.1.0'
   gem 'minitest-reporters', '1.5.0'
   # gem 'rails-controller-testing', '1.0.5'
   gem 'cucumber-rails', require: false

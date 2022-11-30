@@ -1,5 +1,7 @@
+require 'helpers/deletions'
+
 class ProcedureCost < ApplicationRecord
-  include AppHelpers::Deletions
+  include Deletions
 
   # Relationships
   belongs_to :procedure

@@ -1,4 +1,3 @@
-module AppHelpers
   module Activeable
     module ClassMethods
       def active
@@ -22,7 +21,3 @@ module AppHelpers
       end
     end
   end
-end
-
-module Activeable
-end

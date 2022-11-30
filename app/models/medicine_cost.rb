@@ -1,5 +1,6 @@
+require 'helpers/deletions'
 class MedicineCost < ApplicationRecord
-  include AppHelpers::Deletions
+  include Deletions
 
   # Relationships
   belongs_to :medicine

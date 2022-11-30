@@ -1,6 +1,8 @@
+require 'helpers/activeable'
+
 class Medicine < ApplicationRecord
-  include AppHelpers::Activeable::InstanceMethods
-  extend AppHelpers::Activeable::ClassMethods
+  include Activeable::InstanceMethods
+  extend Activeable::ClassMethods
   
   # Relationships
   has_many :animal_medicines

@@ -62,6 +62,9 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "PATS_v1_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+  # hopefully you're not using sqlite in production :^)
+  config.active_record.sqlite3.represent_boolean_as_integer = true
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

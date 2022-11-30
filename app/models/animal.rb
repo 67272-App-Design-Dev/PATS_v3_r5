@@ -1,6 +1,9 @@
+require 'helpers/deletions'
+require 'helpers/Activeable'
+
 class Animal < ApplicationRecord
-  include AppHelpers::Deletions
-  extend AppHelpers::Activeable::ClassMethods
+  include Deletions
+  extend Activeable::ClassMethods
 
   # Relationships
   has_many :pets
@@ -9,8 +12,6 @@ class Animal < ApplicationRecord
   
   # Scopes
   scope :alphabetical, -> { order('name') }
-  # scope :active,       -> { where(active: true) }
-  # scope :inactive,     -> { where(active: false) }
    
   # Validations
   validates_presence_of :name

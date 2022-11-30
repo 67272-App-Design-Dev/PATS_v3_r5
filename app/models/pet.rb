@@ -1,8 +1,12 @@
+require 'helpers/activeable'
+require 'helpers/deletions'
+require 'helpers/validations'
+
 class Pet < ApplicationRecord
-  include AppHelpers::Validations
-  include AppHelpers::Deletions
-  include AppHelpers::Activeable::InstanceMethods
-  extend AppHelpers::Activeable::ClassMethods
+  include Validations
+  include Deletions
+  include Activeable::InstanceMethods
+  extend Activeable::ClassMethods
 
   # Relationships
   # -----------------------------

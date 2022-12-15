@@ -69,6 +69,9 @@ class Pet < ApplicationRecord
 
   before_destroy do 
     cannot_destroy_object()
+    # self.destroyable = false
+    # self.save!
+    # throw(:abort)
   end
   
   # after_rollback do
@@ -91,6 +94,7 @@ class Pet < ApplicationRecord
   end
 
   def make_pet_inactive
+    puts "MAKING PET INACTIVE"
     return true unless self.destroyable == false
     self.make_inactive
     msg = "This #{self.class.to_s.downcase} cannot be deleted but was made inactive instead."

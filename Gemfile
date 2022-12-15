@@ -8,7 +8,7 @@ end
 ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.1.7'
+gem 'rails', '7.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '1.4.2'
 # Use Puma as the app server
@@ -57,11 +57,12 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '2.17.0'
+  gem 'capybara', '~> 3.38.0'
   gem 'selenium-webdriver', '3.8.0'
   # gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'meta_request', '0.7.3'
+  # incompatible per https://github.com/dejan/rails_panel/issues/180
+  # gem 'meta_request', '0.7.3'
   gem 'hirb', '0.7.3'
   gem 'faker', '1.8.7'
   gem 'populator', '1.0.0'
@@ -71,21 +72,25 @@ group :development, :test do
   gem 'shoulda-context', '~> 2.0.0'
   gem 'shoulda-matchers', '~> 5.0.0'
   gem 'minitest', '5.16.3'
-  gem 'minitest-rails', '6.1.0'
+  gem 'minitest-rails', '7.0.0'
   gem 'minitest-reporters', '1.5.0'
   # gem 'rails-controller-testing', '1.0.5'
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails', '~> 2.6.1', require: false
   gem 'database_cleaner'
   gem 'launchy'
 end
+
+# need to run
+# rails active_storage:install
+# bin/rails db:environment:set RAILS_ENV=development
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '3.5.1'
   gem 'listen', '3.1.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '2.0.2'
-  gem 'spring-watcher-listen', '2.0.1'
+  gem 'spring', '~> 4.0.0'
+  gem 'spring-watcher-listen', '~> 2.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

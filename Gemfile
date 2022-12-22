@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.7.0'
+ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '7.0.0'
@@ -45,13 +45,16 @@ gem 'materialize-form', '1.0.8'
 gem 'jquery-rails', '4.3.1'
 gem 'jquery-ui-rails', '6.0.1'
 gem 'cancancan', '2.1.2'
-gem 'validates_timeliness', '4.0.2'
+# TODO: when 7.0.0 is released, don't download from git
+gem 'validates_timeliness', git: "https://github.com/adzap/validates_timeliness"
 gem 'time_date_helpers', '0.0.2'
 gem 'carrierwave', '1.2.2'
 gem 'will_paginate', '3.3.1'
 gem 'vuejs-rails', '2.5.13'
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 
+# TODO: determine if necessary in rails 7.1.0
+gem 'mime-types', '~> 3.4', '>= 3.4.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -87,7 +90,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '3.5.1'
-  gem 'listen', '3.1.5'
+  gem 'listen', '3.7.1'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 4.0.0'
   gem 'spring-watcher-listen', '~> 2.1.0'

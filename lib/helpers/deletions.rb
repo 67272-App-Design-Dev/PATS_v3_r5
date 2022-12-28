@@ -10,7 +10,6 @@
       errors.add(:base, msg)
       puts "CANNOT DESTROY"
       puts errors.present?
-      self.save!
       # raise ActiveRecord::Rollback
       throw(:abort) if errors.present?
       # false

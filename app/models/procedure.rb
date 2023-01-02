@@ -1,6 +1,8 @@
+require 'helpers/activeable'
+
 class Procedure < ApplicationRecord
-  include AppHelpers::Activeable::InstanceMethods
-  extend AppHelpers::Activeable::ClassMethods
+  include Activeable::InstanceMethods
+  extend Activeable::ClassMethods
 
   # Relationships
   has_many :procedure_costs
@@ -48,7 +50,7 @@ class Procedure < ApplicationRecord
 
   def convert_to_inactive
     if !@destroyable.nil? && @destroyable == false
-      self.update_attribute(:active, false)
+      self.update_column(:active, false)
     end
     @destroyable = nil
   end

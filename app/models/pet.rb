@@ -1,8 +1,12 @@
+require 'helpers/activeable'
+require 'helpers/deletions'
+require 'helpers/validations'
+
 class Pet < ApplicationRecord
-  include AppHelpers::Validations
-  include AppHelpers::Deletions
-  include AppHelpers::Activeable::InstanceMethods
-  extend AppHelpers::Activeable::ClassMethods
+  include Validations
+  include Deletions
+  include Activeable::InstanceMethods
+  extend Activeable::ClassMethods
 
   # Relationships
   # -----------------------------
@@ -67,12 +71,6 @@ class Pet < ApplicationRecord
     cannot_destroy_object()
   end
   
-  # after_rollback do
-  #   return true unless self.destroyable == false
-  #   self.make_inactive
-  #   # problem is no error msg given to user
-  # end
-
   after_rollback :make_pet_inactive  #, on: :destroy
   
   # Use private methods to execute the custom validations

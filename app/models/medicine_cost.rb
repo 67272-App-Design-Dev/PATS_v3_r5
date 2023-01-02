@@ -1,5 +1,6 @@
+require 'helpers/deletions'
 class MedicineCost < ApplicationRecord
-  include AppHelpers::Deletions
+  include Deletions
 
   # Relationships
   belongs_to :medicine
@@ -24,7 +25,7 @@ class MedicineCost < ApplicationRecord
   private
   def set_end_date_of_old_cost
     previous = MedicineCost.current.for_medicine(self.medicine_id).take
-    previous.update_attribute(:end_date, self.start_date) unless previous.nil?
+    previous.update_column(:end_date, self.start_date) unless previous.nil?
   end
 
 end

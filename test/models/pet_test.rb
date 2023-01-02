@@ -107,7 +107,7 @@ class PetTest < ActiveSupport::TestCase
       deny @dusty.destroy
     end
     
-    should "deactive a pet instead of being destroyed" do
+    should "deactivate a pet instead of destroying it" do
       assert @dusty.active
       @dusty.destroy
       @dusty.reload

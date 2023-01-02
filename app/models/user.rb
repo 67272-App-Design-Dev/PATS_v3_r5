@@ -1,6 +1,8 @@
+require 'helpers/activeable'
+
 class User < ApplicationRecord
-  include AppHelpers::Activeable::InstanceMethods
-  extend AppHelpers::Activeable::ClassMethods
+  include Activeable::InstanceMethods
+  extend Activeable::ClassMethods
 
   # Use built-in rails support for password protection
   has_secure_password

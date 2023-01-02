@@ -53,6 +53,9 @@ class ProcedureCostTest < ActiveSupport::TestCase
       @change_cost = FactoryBot.create(:procedure_cost, procedure: @xray, start_date: 1.month.ago.to_date, cost: 4500)
       @xray_c1.reload
       assert_equal 1.month.ago.to_date, @xray_c1.end_date
+
+      # clean up created fixtures
+      @change_cost.delete
     end
     
     should "show that a procedure cost that has been used cannot be destroyed but made inactive" do

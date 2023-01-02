@@ -29,3 +29,15 @@ app/assets/images/.DS_Store
 app/assets/stylesheets/.DS_Store
 app/assets/javascripts/.DS_Store
 
+
+db/development.sqlite3
+db/test.sqlite3
+
+Gemfile.lock
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

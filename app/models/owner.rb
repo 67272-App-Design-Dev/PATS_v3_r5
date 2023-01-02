@@ -1,7 +1,10 @@
+require 'helpers/deletions'
+require 'helpers/activeable'
+
 class Owner < ApplicationRecord
-  include AppHelpers::Deletions
-  include AppHelpers::Activeable::InstanceMethods
-  extend AppHelpers::Activeable::ClassMethods
+  include Deletions
+  include Activeable::InstanceMethods
+  extend Activeable::ClassMethods
 
   attr_accessor :username, :password, :password_confirmation
     

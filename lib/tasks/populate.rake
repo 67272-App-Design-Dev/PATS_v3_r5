@@ -206,7 +206,7 @@ namespace :db do
         visit = Visit.new
         visit.pet_id = pet.id
         # set the visit to sometime between DOB and the present
-        visit.date = Faker::Time.between(pet.date_of_birth, Date.today).to_date
+        visit.date = Faker::Time.between(from: pet.date_of_birth, to: Date.today).to_date
         # different animals fall in different weight ranges so we need
         # to find the right range of weights for the visiting pet
         case pet.animal_id

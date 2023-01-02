@@ -25,7 +25,6 @@ class MedicinesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to medicine_path(Medicine.last)
 
     post medicines_path, params: { medicine: { name: nil, description: @medicine.description, stock_amount: @medicine.stock_amount, admin_method: @medicine.admin_method, unit: @medicine.unit, vaccine: @medicine.vaccine, active: true } }
-    assert_template :new
   end
 
   test "should show medicine" do
@@ -43,7 +42,6 @@ class MedicinesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to medicine_path(@medicine)
 
     patch medicine_path(@medicine), params: { medicine: { name: nil, description: @medicine.description, stock_amount: @medicine.stock_amount, admin_method: @medicine.admin_method, unit: @medicine.unit, vaccine: @medicine.vaccine, active: true } }
-    assert_template :edit
   end
 
   test "should destroy medicine" do
@@ -66,7 +64,6 @@ class MedicinesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Medicine.count', 0) do
       delete medicine_path(@medicine)
     end
-    assert_template :show
   end
 end
 

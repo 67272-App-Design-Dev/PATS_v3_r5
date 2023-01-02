@@ -1,4 +1,3 @@
-module AppHelpers
   module Validations
     def is_active_in_system(attribute)
       # This method tests to see if the value set for the attribute is
@@ -35,4 +34,3 @@ module AppHelpers
       return false
     end
   end
-end

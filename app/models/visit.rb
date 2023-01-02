@@ -1,5 +1,7 @@
+require 'helpers/deletions'
+
 class Visit < ApplicationRecord
-  include AppHelpers::Deletions
+  include Deletions
 
   # Relationships
   # -----------------------------

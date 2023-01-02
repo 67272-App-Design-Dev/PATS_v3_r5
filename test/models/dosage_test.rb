@@ -67,7 +67,7 @@ class DosageTest < ActiveSupport::TestCase
       deny bad_dosage.valid?
       
       # destroy the visit by Dusty
-      @visit_dusty.destroy    
+      @visit_dusty.delete
     end
 
     # test callback 'update_total_cost_of_visit'
@@ -77,6 +77,9 @@ class DosageTest < ActiveSupport::TestCase
       unit_costs_for_d2 = MedicineCost.for_medicine(@amoxicillin.id).for_date(@visit1.date).first.cost_per_unit
       additional_charge = visit1_d2.units_given.to_f * (1-visit1_d2.discount) * unit_costs_for_d2
       assert_equal (old_charge + additional_charge), @visit1.total_charge
+
+      # cleanup created fixtures
+      visit1_d2.destroy
     end
 
     # test callback 'refund_amount_in_cost_of_visit'
@@ -94,6 +97,9 @@ class DosageTest < ActiveSupport::TestCase
       visit1_d2 = FactoryBot.create(:dosage, visit: @visit1, medicine: @amoxicillin)
       @amoxicillin.reload
       assert_equal (original_stock_amount - visit1_d2.units_given), @amoxicillin.stock_amount
+
+      # cleanup created fixtures
+      visit1_d2.destroy
     end
     
     should "correctly calculate the additional cost of dosage" do
@@ -101,6 +107,9 @@ class DosageTest < ActiveSupport::TestCase
       addt_dosge = FactoryBot.create(:dosage, visit: @visit1, medicine: @amoxicillin)
       @visit1.reload
       assert_equal @visit1.total_charge, 8500
+
+      # cleanup created fixtures
+      addt_dosge.destroy
     end
     
     should "correctly recalculate the refund for a deleted dosage" do

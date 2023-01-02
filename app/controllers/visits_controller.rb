@@ -35,7 +35,7 @@ class VisitsController < ApplicationController
   end
   
   def update
-    if @visit.update_attributes(visit_params)
+    if @visit.update(visit_params)
       flash[:notice] = "Successfully updated visit by #{@visit.pet.name}."
       redirect_to @visit
     else

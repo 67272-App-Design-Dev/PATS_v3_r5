@@ -1,4 +1,3 @@
-module AppHelpers
   module Deletions
     # set up accessor methods for destroyable
     attr_accessor :destroyable
@@ -14,4 +13,3 @@ module AppHelpers
       # if respond_to? :active, why not make_inactive as well?            (hint: transactions)
     end
   end
-end

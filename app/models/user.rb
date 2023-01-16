@@ -13,7 +13,11 @@ class User < ApplicationRecord
 
   # enums
   enum :role, { vet: 1, assistant: 2, owner: 3}, scopes: true, default: :owner
-  ROLES = [['Vet', User.roles[:vet]],['Assistant', User.roles[:assistant]],['Owner', User.roles[:owner]]]
+  ROLES = [
+    ['Vet', User.roles[:vet]],
+    ['Assistant', User.roles[:assistant]],
+    ['Owner', User.roles[:owner]]
+  ]
 
   # Validations
   # make sure required fields are present

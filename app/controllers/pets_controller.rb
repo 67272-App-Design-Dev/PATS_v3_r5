@@ -47,13 +47,8 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    ## Same as owners
-    if @pet.destroy
-      # redirect_to pets_path, notice: "Removed #{@pet.name} from the PATS system"
-    else
-      @recent_visits = @pet.visits.chronological.last(10).to_a
-      render action: 'show'
-    end
+    @pet.make_inactive
+    redirect_to pets_path, notice: "Deactivated #{@pet.name}"
   end
 
   private

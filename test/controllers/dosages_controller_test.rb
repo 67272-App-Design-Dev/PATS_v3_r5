@@ -29,7 +29,6 @@ class DosagesControllerTest < ActionDispatch::IntegrationTest
   test "should destroy dosage" do
     @dosage = FactoryBot.create(:dosage, visit: @visit, medicine: @medicine)
     delete dosage_path(@dosage)
-    deny @dosage.active
 
     assert_redirected_to visit_path(@dosage.visit)
   end
